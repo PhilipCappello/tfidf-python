@@ -34,8 +34,4 @@ first_document_vector = tf_idf_vector[1]
 df_tfidf = pd.DataFrame(first_document_vector.T.todense(), index=feature_names, columns=["tfidf"])
 # inverted document frequency (IDF)
 df_tfidf.sort_values(by=["tfidf"],ascending=False)
-<<<<<<< HEAD
-print("___________________________________DF_TFIDF")
-=======
->>>>>>> d55dddf2e5299c7859e0f521a7c84d5a430d19e1
 print(df_tfidf)
