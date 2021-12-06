@@ -10,7 +10,8 @@ import re
 import string
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
-
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import f1_score
 
 #reading the data
 test_csv = pd.read_csv('small_test3.csv') 
@@ -25,9 +26,9 @@ nltk.download('stopwords')
 train_csv.head()
 
 train_X_non = train_csv['Text']   # '0' refers to the review text
-train_y = train_csv['ID']   # '1' corresponds to Label (1 - positive and 0 - negative)
+train_y = train_csv['Class']   # '1' corresponds to Label (1 - positive and 0 - negative)
 test_X_non = test_csv['Text']
-test_y = test_csv['ID']
+test_y = test_csv['Class']
 train_X=[]
 test_X=[]
 
@@ -88,4 +89,13 @@ print("Line:87")
 #predicted y
 y_pred = naive_bayes_classifier.predict(X_test_tf)
 
-print(metrics.classification_report(test_y, y_pred, target_names=['positive', 'negative','neutral']))
+y_train = naive_bayes_classifier.predict(X_train_tf)
+
+
+# Classification metrics
+
+#classification_report = classification_report(test_y, y_pred)
+# target_names = [f"class{i}" for i in range(5)]
+
+print(metrics.classification_report(test_y, y_pred, target_names=['positive','negative','neutral']))
+# print(metrics.f1_score(test_y, y_pred, average='weighted', labels=np.unique(y_pred)))
