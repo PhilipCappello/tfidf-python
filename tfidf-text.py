@@ -15,7 +15,8 @@ idlist=list(data.ID)
 # use count vertorizer 
 count=CountVectorizer()
 word_count=count.fit_transform(textlist) 
-# print(word_count.shape) # will reveal how many sentences and unique words 
+print("___________________________________IDF")
+print(word_count.shape) # will reveal how many sentences and unique words 
 
 # use idf transformer to get the weights of all unique words in the documents 
 tfidf_transformer = TfidfTransformer(smooth_idf=True,use_idf=True)
@@ -23,7 +24,8 @@ tfidf_transformer.fit(word_count)
 df_idf = pd.DataFrame(tfidf_transformer.idf_,index=count.get_feature_names_out(),columns=['idf_weights'])
 # inverse document frequency 
 df_idf.sort_values(by=['idf_weights'])
-# print(df_idf)
+print("___________________________________DF_IDF")
+print(df_idf)
 
 # tf-idf transformation 
 tf_idf_vector = tfidf_transformer.transform(word_count)
@@ -32,4 +34,5 @@ first_document_vector = tf_idf_vector[1]
 df_tfidf = pd.DataFrame(first_document_vector.T.todense(), index=feature_names, columns=["tfidf"])
 # inverted document frequency (IDF)
 df_tfidf.sort_values(by=["tfidf"],ascending=False)
-# print(df_tfidf)
+print("___________________________________DF_TFIDF")
+print(df_tfidf)
