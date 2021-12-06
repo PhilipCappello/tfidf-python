@@ -1,0 +1,14 @@
+            tfidf
+00            0.0
+000           0.0
+0000          0.0
+0000000       0.0
+000km         0.0
+...           ...
+zzepolis      0.0
+zzz           0.0
+zzzz          0.0
+zzzzzzz       0.0
+zzzzzzzzzz    0.0
+
+[55104 rows x 1 columns]
