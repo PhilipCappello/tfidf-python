@@ -25,6 +25,7 @@ train_csv.head()
 
 train_X = train_csv['Text']
 X = []
+
 for i in range(0, len(train_X)):
     review = re.sub('[^a-zA-Z]', ' ', train_X[i])
     review = review.lower()
@@ -79,6 +80,8 @@ y_pred_test_data = classifier.predict(test_X)
 
 f = open('prediction.csv', 'w')
 writer = csv.writer(f)
+header = ['REVIEW-ID', 'CLASS']
+writer.writerow(header)
 for i in range(0, len(y_pred_test_data)):
     row = [X_ID[i], y_pred_test_data[i]]
     writer.writerow(row)
